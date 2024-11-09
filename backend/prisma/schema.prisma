@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  name          String?
+  dietPlans     DietPlan[] // Relação de volta com DietPlan
+  trainingPlans TrainingPlan[] // Relação de volta com TrainingPlan
+}
+
+
+model DietPlan {
+  id     Int     @id @default(autoincrement())
+  userId Int
+  dayId  Int
+  dietId Int
+  user   User    @relation(fields: [userId], references: [id])
+  day    Weekday @relation(fields: [dayId], references: [id])
+  diet   Diet    @relation(fields: [dietId], references: [id])
+}
+
+
+model Weekday {
+  id            Int            @id @default(autoincrement())
+  dayName       String         @unique
+  dietPlans     DietPlan[] // Relação de volta com DietPlan
+  trainingPlans TrainingPlan[] // Relação de volta com TrainingPlan
+}
+
+
+model Diet {
+  id        Int        @id @default(autoincrement())
+  name      String
+  dietPlans DietPlan[] // Relação de volta com DietPlan
+  meals     Meal[] // Relação de volta com Meal
+}
+
+
+model Exercise {
+  id        Int     @id @default(autoincrement())
+  name      String
+  workoutId Int
+  workout   Workout @relation(fields: [workoutId], references: [id])
+}
+
+
+model Workout {
+  id            Int            @id @default(autoincrement())
+  name          String
+  exercises     Exercise[] // Relação de volta com Exercise
+  trainingPlans TrainingPlan[] // Relação de volta com TrainingPlan
+}
+
+
+model TrainingPlan {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  dayId     Int
+  workoutId Int
+  user      User    @relation(fields: [userId], references: [id])
+  day       Weekday @relation(fields: [dayId], references: [id])
+  workout   Workout @relation(fields: [workoutId], references: [id])
+}
+
+
+model Meal {
+  id     Int  @id @default(autoincrement())
+  dietId Int
+  diet   Diet @relation(fields: [dietId], references: [id])
+}
