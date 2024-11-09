@@ -17,8 +17,10 @@ model User {
   id            Int            @id @default(autoincrement())
   email         String         @unique
   name          String?
-  dietPlans     DietPlan[] // Relação de volta com DietPlan
-  trainingPlans TrainingPlan[] // Relação de volta com TrainingPlan
+  password      String?      @db.VarChar(100)
+  is_admin  Boolean     @default(false)
+  dietPlans     DietPlan[]
+  trainingPlans TrainingPlan[] 
 }
 
 
@@ -44,8 +46,8 @@ model Weekday {
 model Diet {
   id        Int        @id @default(autoincrement())
   name      String
-  dietPlans DietPlan[] // Relação de volta com DietPlan
-  meals     Meal[] // Relação de volta com Meal
+  dietPlans DietPlan[] 
+  meals     Meal[]
 }
 
 
@@ -60,8 +62,8 @@ model Exercise {
 model Workout {
   id            Int            @id @default(autoincrement())
   name          String
-  exercises     Exercise[] // Relação de volta com Exercise
-  trainingPlans TrainingPlan[] // Relação de volta com TrainingPlan
+  exercises     Exercise[] 
+  trainingPlans TrainingPlan[] 
 }
 
 
