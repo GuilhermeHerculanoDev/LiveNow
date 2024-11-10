@@ -5,14 +5,18 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MealController } from './meal/meal.controller';
 import { MealModule } from './meal/meal.module';
+import { DietController } from './diet/diet.controller';
+import { DietService } from './diet/diet.service';
+import { DietModule } from './diet/diet.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     MealModule,
+    DietModule,
   ],
-  controllers: [AppController, MealController],
-  providers: [AppService],
+  controllers: [AppController, MealController, DietController],
+  providers: [AppService, DietService],
 })
 export class AppModule {}
