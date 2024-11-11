@@ -15,6 +15,9 @@ import { PrismaModule } from './database/prisma.module';
 import { ExerciseController } from './exercise/exercise.controller';
 import { ExerciseService } from './exercise/exercise.service';
 import { ExerciseModule } from './exercise/exercise.module';
+import { WorkoutController } from './workout/workout.controller';
+import { WorkoutService } from './workout/workout.service';
+import { WorkoutModule } from './workout/workout.module';
 
 @Module({
   imports: [
@@ -25,8 +28,9 @@ import { ExerciseModule } from './exercise/exercise.module';
     DietPlanModule,
     PrismaModule,
     ExerciseModule,
+    WorkoutModule,
   ],
-  controllers: [AppController, MealController, DietController ,DietController, ExerciseController],
-  providers: [AppService, MealService ,DietService, DietPlanService, ExerciseService],
+  controllers: [AppController, MealController, DietController ,DietController, ExerciseController, WorkoutController],
+  providers: [AppService, MealService ,DietService, DietPlanService, ExerciseService, WorkoutService],
 })
 export class AppModule {}

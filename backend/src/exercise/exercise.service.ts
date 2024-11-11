@@ -42,11 +42,11 @@ export class ExerciseService {
                 });
                 return updatedUser;
             } catch (error) {
-                throw new NotFoundException('refeição não encontrada');
+                throw new NotFoundException('Exercicio não encontrada');
             }
         }
         
-        throw new UnauthorizedException("Sua refeição não pode ser editada");
+        throw new UnauthorizedException("Seu exercicio não pode ser editada");
     }
 
     async delete(id: number): Promise<IExercise> {
