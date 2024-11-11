@@ -36,11 +36,11 @@ export class MealService {
 
         if (id === number) {
             try {
-                const updatedUser = await this.prisma.meal.update({
+                const updatedMeal = await this.prisma.meal.update({
                     where: { id: number },
                     data: meals,
                 });
-                return updatedUser;
+                return updatedMeal;
             } catch (error) {
                 throw new NotFoundException('refeição não encontrada');
             }

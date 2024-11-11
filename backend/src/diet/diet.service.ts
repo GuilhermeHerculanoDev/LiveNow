@@ -36,17 +36,17 @@ export class DietService {
 
         if (id === number) {
             try {
-                const updatedUser = await this.prisma.diet.update({
+                const updatedDiet = await this.prisma.diet.update({
                     where: { id: number },
                     data: diets,
                 });
-                return updatedUser;
+                return updatedDiet;
             } catch (error) {
-                throw new NotFoundException('refeição não encontrada');
+                throw new NotFoundException('Exercicio não encontrado');
             }
         }
         
-        throw new UnauthorizedException("Sua refeição não pode ser editada");
+        throw new UnauthorizedException("Seu exercicio não pode ser editado");
     }
 
     async delete(id: number): Promise<IDiet> {
@@ -58,6 +58,6 @@ export class DietService {
             });
         }
 
-        throw new UnauthorizedException("Seu usuário não pode excluir está refeição");
+        throw new UnauthorizedException("Seu usuário não pode excluir este exercicio");
     }
 }

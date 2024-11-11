@@ -36,11 +36,11 @@ export class DietPlanService {
 
         if (id === number) {
             try {
-                const updatedUser = await this.prisma.dietPlan.update({
+                const updatedDietPlan = await this.prisma.dietPlan.update({
                     where: { id: number },
                     data: planDiets,
                 });
-                return updatedUser;
+                return updatedDietPlan;
             } catch (error) {
                 throw new NotFoundException('Plano de Dieta não encontrado');
             }
