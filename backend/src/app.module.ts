@@ -8,6 +8,10 @@ import { MealModule } from './meal/meal.module';
 import { DietController } from './diet/diet.controller';
 import { DietService } from './diet/diet.service';
 import { DietModule } from './diet/diet.module';
+import { DietPlanService } from './diet-plan/diet-plan.service';
+import { DietPlanModule } from './diet-plan/diet-plan.module';
+import { MealService } from './meal/meal.service';
+import { PrismaModule } from './database/prisma.module';
 
 @Module({
   imports: [
@@ -15,8 +19,10 @@ import { DietModule } from './diet/diet.module';
     UsersModule,
     MealModule,
     DietModule,
+    DietPlanModule,
+    PrismaModule,
   ],
-  controllers: [AppController, MealController, DietController],
-  providers: [AppService, DietService],
+  controllers: [AppController, MealController, DietController ,DietController],
+  providers: [AppService, MealService ,DietService, DietPlanService],
 })
 export class AppModule {}
