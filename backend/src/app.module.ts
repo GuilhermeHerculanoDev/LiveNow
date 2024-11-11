@@ -18,6 +18,7 @@ import { ExerciseModule } from './exercise/exercise.module';
 import { WorkoutController } from './workout/workout.controller';
 import { WorkoutService } from './workout/workout.service';
 import { WorkoutModule } from './workout/workout.module';
+import { TrainingPlanModule } from './training-plan/training-plan.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { WorkoutModule } from './workout/workout.module';
     PrismaModule,
     ExerciseModule,
     WorkoutModule,
+    TrainingPlanModule,
   ],
   controllers: [AppController, MealController, DietController ,DietController, ExerciseController, WorkoutController],
   providers: [AppService, MealService ,DietService, DietPlanService, ExerciseService, WorkoutService],
